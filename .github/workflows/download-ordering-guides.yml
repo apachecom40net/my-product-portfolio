@@ -36,6 +36,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Pull latest commits
+        run: git pull origin ${{ github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
