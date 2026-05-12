@@ -16,14 +16,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install markitdown
+        run: pip install markitdown
+
       - name: Run download script
         run: bash scripts/download-og.sh ordering-guides/pdf
+
+      - name: Convert PDFs to Markdown
+        run: bash scripts/convert-og.sh ordering-guides/pdf ordering-guides/markdown
 
       - name: Commit and push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ordering-guides/pdf/
+          git add ordering-guides/pdf/ ordering-guides/markdown/
           if git diff --staged --quiet; then
             echo "No changes — guides are already up to date."
           else
