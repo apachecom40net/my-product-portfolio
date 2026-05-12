@@ -161,12 +161,13 @@ jobs:
             echo "No changes detected — PDFs are already up to date."
           else
             RUN_DATE=$(date -u "+%Y-%m-%d")
-            CHANGED=$(git diff --staged --name-only | wc -l | tr -d ' ')
+            CHANGED_FILES=$(git diff --staged --name-only)
+            CHANGED=$(echo "${CHANGED_FILES}" | wc -l | tr -d ' ')
 
             git commit -m "chore: update Fortinet ordering guides [${RUN_DATE}]
 
 Updated ${CHANGED} file(s):
-$(git diff HEAD~1 --name-only 2>/dev/null || git diff --staged --name-only)
+${CHANGED_FILES}
 
 Source: https://www.fortinet.com/resources/ordering-guides
 Workflow: ${{ github.workflow }} / run ${{ github.run_number }}"
