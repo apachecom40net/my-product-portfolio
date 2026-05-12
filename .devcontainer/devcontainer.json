@@ -1,7 +1,7 @@
 {
   "name": "Fortinet Ordering Guides",
   "build": {
-    "dockerfile": "Dockerfile"
+    "dockerfile": "../Dockerfile"
   },
 
   // ── workspace ────────────────────────────────────────────────────────────────
