@@ -57,6 +57,7 @@ jobs:
             echo "  Product : ${LOCAL_NAME}"
             echo "  URL     : ${URL}"
 
+            # Capture both response headers and body for diagnostics
             HTTP_CODE=$(curl \
               --silent \
               --show-error \
@@ -65,27 +66,42 @@ jobs:
               --retry 3 \
               --retry-delay 5 \
               --retry-connrefused \
+              --dump-header "${TMP_FILE}.headers" \
               --output "${TMP_FILE}" \
               --write-out "%{http_code}" \
               --user-agent "Mozilla/5.0 (compatible; GitHubActions/1.0)" \
               "${URL}" \
             )
 
+            # Always print response headers for diagnostics
+            if [[ -f "${TMP_FILE}.headers" ]]; then
+              echo "  Headers:"
+              cat "${TMP_FILE}.headers"
+              rm -f "${TMP_FILE}.headers"
+            fi
+
             if [[ "${HTTP_CODE}" == "200" ]] && [[ -s "${TMP_FILE}" ]]; then
               # Verify it is actually a PDF
-              if file "${TMP_FILE}" | grep -qi "pdf"; then
+              FTYPE=$(file --brief "${TMP_FILE}")
+              echo "  File type: ${FTYPE}"
+              if echo "${FTYPE}" | grep -qi "pdf"; then
                 mv "${TMP_FILE}" "${DEST_FILE}"
                 SIZE=$(du -h "${DEST_FILE}" | cut -f1)
                 echo "  ✅  Downloaded (${SIZE})"
                 SUMMARY="${SUMMARY}\n  ✅  ${LOCAL_NAME} (${SIZE})"
                 (( DOWNLOADED++ ))
               else
+                echo "  Response body (first 500 bytes):"
+                head -c 500 "${TMP_FILE}" || true
                 rm -f "${TMP_FILE}"
-                echo "  ⚠️   HTTP ${HTTP_CODE} but response is not a PDF — skipping"
-                SUMMARY="${SUMMARY}\n  ⚠️  ${LOCAL_NAME} — not a PDF (HTTP ${HTTP_CODE})"
+                echo "  ⚠️   HTTP ${HTTP_CODE} but not a PDF (got: ${FTYPE}) — skipping"
+                SUMMARY="${SUMMARY}\n  ⚠️  ${LOCAL_NAME} — not a PDF: ${FTYPE}"
                 (( FAILED++ ))
               fi
             else
+              # Print body to reveal error message (e.g. WAF block, redirect loop)
+              echo "  Response body (first 500 bytes):"
+              head -c 500 "${TMP_FILE}" 2>/dev/null || echo "  (empty)"
               rm -f "${TMP_FILE}"
               echo "  ❌  Failed — HTTP ${HTTP_CODE}"
               SUMMARY="${SUMMARY}\n  ❌  ${LOCAL_NAME} — HTTP ${HTTP_CODE}"
