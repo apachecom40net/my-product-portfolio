@@ -48,7 +48,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install markitdown
-        run: pip install markitdown
+        run: pip install 'markitdown[pdf]'
 
       - name: Convert PDFs to Markdown
         run: bash scripts/convert-og.sh ordering-guides/pdf ordering-guides/markdown
