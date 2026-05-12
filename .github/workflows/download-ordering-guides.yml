@@ -1,4 +1,4 @@
-name: Download Fortinet Ordering Guides
+name: Fortinet Ordering Guides
 
 on:
   schedule:
@@ -9,9 +9,30 @@ permissions:
   contents: write
 
 jobs:
-  download-and-commit:
+  download:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      - name: Download PDFs
+        run: bash scripts/download-og.sh ordering-guides/pdf
+
+      - name: Commit PDFs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ordering-guides/pdf/
+          if git diff --staged --quiet; then
+            echo "No changes — PDFs already up to date."
+          else
+            git commit -m "chore: download ordering guides PDFs [$(date -u +%Y-%m-%d)]"
+            git push
+          fi
+
+  convert:
+    runs-on: ubuntu-latest
+    needs: download
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,20 +45,17 @@ jobs:
       - name: Install markitdown
         run: pip install markitdown
 
-      - name: Run download script
-        run: bash scripts/download-og.sh ordering-guides/pdf
-
       - name: Convert PDFs to Markdown
         run: bash scripts/convert-og.sh ordering-guides/pdf ordering-guides/markdown
 
-      - name: Commit and push
+      - name: Commit Markdown
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ordering-guides/pdf/ ordering-guides/markdown/
+          git add ordering-guides/markdown/
           if git diff --staged --quiet; then
-            echo "No changes — guides are already up to date."
+            echo "No changes — Markdown already up to date."
           else
-            git commit -m "chore: update Fortinet ordering guides [$(date -u +%Y-%m-%d)]"
+            git commit -m "chore: convert ordering guides to markdown [$(date -u +%Y-%m-%d)]"
             git push
           fi
