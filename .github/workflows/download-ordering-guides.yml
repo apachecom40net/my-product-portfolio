@@ -1,184 +1,32 @@
 name: Download Fortinet Ordering Guides
 
 on:
-  # ── run on a schedule (every Monday at 06:00 UTC) ──────────────────────────
   schedule:
-    - cron: "0 6 * * 1"
-
-  # ── allow manual trigger from the Actions tab ───────────────────────────────
-  workflow_dispatch:
+    - cron: "0 6 * * 1"   # every Monday at 06:00 UTC
+  workflow_dispatch:       # manual trigger from Actions tab
 
 permissions:
-  contents: write   # needed to push the commit
+  contents: write
 
 jobs:
   download-and-commit:
     runs-on: ubuntu-latest
 
     steps:
-      # ── 1. checkout repo ────────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
-      # ── 2. download all ordering guides ─────────────────────────────────────
-      - name: Download Fortinet ordering guides
-        shell: bash
-        run: |
-          set -euo pipefail
+      - name: Run download script
+        run: bash scripts/download-og.sh ordering-guides
 
-          DEST="ordering-guides"
-          BASE_URL="https://www.fortinet.com/content/dam/fortinet/assets/data-sheets"
-
-          # ── product map: filename → remote PDF slug ────────────────────────
-          declare -A GUIDES=(
-            ["og-fortiappsec.pdf"]="og-fortiappsec.pdf"
-            ["og-fortiweb.pdf"]="og-fortiweb.pdf"
-            ["og-fortiadc.pdf"]="og-fortiadc.pdf"
-            ["og-forticnapp.pdf"]="og-forticnapp.pdf"
-            ["og-casb.pdf"]="og-casb.pdf"
-            ["og-forticasb-sspm.pdf"]="og-forticasb-sspm.pdf"
-          )
-
-          mkdir -p "${DEST}"
-
-          DOWNLOADED=0
-          FAILED=0
-          SUMMARY=""
-
-          for LOCAL_NAME in "${!GUIDES[@]}"; do
-            REMOTE_SLUG="${GUIDES[$LOCAL_NAME]}"
-            URL="${BASE_URL}/${REMOTE_SLUG}"
-            DEST_FILE="${DEST}/${LOCAL_NAME}"
-            TMP_FILE="${DEST_FILE}.tmp"
-
-            echo "──────────────────────────────────────────────"
-            echo "  Product : ${LOCAL_NAME}"
-            echo "  URL     : ${URL}"
-
-            # Capture both response headers and body for diagnostics
-            HTTP_CODE=$(curl \
-              --silent \
-              --show-error \
-              --location \
-              --max-time 60 \
-              --retry 3 \
-              --retry-delay 5 \
-              --retry-connrefused \
-              --dump-header "${TMP_FILE}.headers" \
-              --output "${TMP_FILE}" \
-              --write-out "%{http_code}" \
-              --user-agent "Mozilla/5.0 (compatible; GitHubActions/1.0)" \
-              "${URL}" \
-            )
-
-            # Always print response headers for diagnostics
-            if [[ -f "${TMP_FILE}.headers" ]]; then
-              echo "  Headers:"
-              cat "${TMP_FILE}.headers"
-              rm -f "${TMP_FILE}.headers"
-            fi
-
-            if [[ "${HTTP_CODE}" == "200" ]] && [[ -s "${TMP_FILE}" ]]; then
-              # Verify it is actually a PDF
-              FTYPE=$(file --brief "${TMP_FILE}")
-              echo "  File type: ${FTYPE}"
-              if echo "${FTYPE}" | grep -qi "pdf"; then
-                mv "${TMP_FILE}" "${DEST_FILE}"
-                SIZE=$(du -h "${DEST_FILE}" | cut -f1)
-                echo "  ✅  Downloaded (${SIZE})"
-                SUMMARY="${SUMMARY}\n  ✅  ${LOCAL_NAME} (${SIZE})"
-                (( DOWNLOADED++ ))
-              else
-                echo "  Response body (first 500 bytes):"
-                head -c 500 "${TMP_FILE}" || true
-                rm -f "${TMP_FILE}"
-                echo "  ⚠️   HTTP ${HTTP_CODE} but not a PDF (got: ${FTYPE}) — skipping"
-                SUMMARY="${SUMMARY}\n  ⚠️  ${LOCAL_NAME} — not a PDF: ${FTYPE}"
-                (( FAILED++ ))
-              fi
-            else
-              # Print body to reveal error message (e.g. WAF block, redirect loop)
-              echo "  Response body (first 500 bytes):"
-              head -c 500 "${TMP_FILE}" 2>/dev/null || echo "  (empty)"
-              rm -f "${TMP_FILE}"
-              echo "  ❌  Failed — HTTP ${HTTP_CODE}"
-              SUMMARY="${SUMMARY}\n  ❌  ${LOCAL_NAME} — HTTP ${HTTP_CODE}"
-              (( FAILED++ ))
-            fi
-          done
-
-          echo ""
-          echo "══════════════════════════════════════════════"
-          echo "  Downloaded : ${DOWNLOADED}"
-          echo "  Failed     : ${FAILED}"
-          echo -e "${SUMMARY}"
-          echo "══════════════════════════════════════════════"
-
-          # Fail the step if every single download failed
-          if [[ "${DOWNLOADED}" -eq 0 ]]; then
-            echo "::error::All downloads failed."
-            exit 1
-          fi
-
-      # ── 3. write metadata manifest ──────────────────────────────────────────
-      - name: Write download manifest
-        shell: bash
-        run: |
-          DEST="ordering-guides"
-          MANIFEST="${DEST}/MANIFEST.md"
-          RUN_DATE=$(date -u "+%Y-%m-%d %H:%M UTC")
-
-          {
-            echo "# Fortinet Ordering Guides — Download Manifest"
-            echo ""
-            echo "Last updated: **${RUN_DATE}**"
-            echo ""
-            echo "| File | Size | SHA-256 |"
-            echo "|------|------|---------|"
-            for PDF in "${DEST}"/*.pdf; do
-              [[ -f "${PDF}" ]] || continue
-              FNAME=$(basename "${PDF}")
-              SIZE=$(du -h "${PDF}" | cut -f1)
-              SHA=$(sha256sum "${PDF}" | awk '{print $1}')
-              echo "| \`${FNAME}\` | ${SIZE} | \`${SHA}\` |"
-            done
-            echo ""
-            echo "## Sources"
-            echo ""
-            echo "All PDFs downloaded from:"
-            echo "\`https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/\`"
-            echo ""
-            echo "| Product | File |"
-            echo "|---------|------|"
-            echo "| FortiAppSec Cloud | \`og-fortiappsec.pdf\` |"
-            echo "| FortiWeb          | \`og-fortiweb.pdf\` |"
-            echo "| FortiADC          | \`og-fortiadc.pdf\` |"
-            echo "| FortiCNAPP        | \`og-forticnapp.pdf\` |"
-            echo "| FortiCASB         | \`og-casb.pdf\` |"
-            echo "| FortiCASB SSPM    | \`og-forticasb-sspm.pdf\` |"
-          } > "${MANIFEST}"
-
-          echo "Manifest written to ${MANIFEST}"
-          cat "${MANIFEST}"
-
-      # ── 4. commit & push if anything changed ────────────────────────────────
-      - name: Commit and push updated guides
-        shell: bash
+      - name: Commit and push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add ordering-guides/
-
-          # Only commit when there are actual changes
           if git diff --staged --quiet; then
-            echo "No changes detected — PDFs are already up to date."
+            echo "No changes — guides are already up to date."
           else
-            RUN_DATE=$(date -u "+%Y-%m-%d")
-            git commit -m "chore: update Fortinet ordering guides [${RUN_DATE}]"
-
+            git commit -m "chore: update Fortinet ordering guides [$(date -u +%Y-%m-%d)]"
             git push
-            echo "✅ Changes pushed to repository."
           fi
