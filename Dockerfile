@@ -26,24 +26,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 python3
     && pip3 install --break-system-packages 'markitdown[pdf]'
 
 # ── oh-my-zsh ─────────────────────────────────────────────────────────────────
+# The base image already ships oh-my-zsh — skip the installer, just configure.
 ENV SHELL=/usr/bin/zsh
-ENV ZSH=/root/.oh-my-zsh
-
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 RUN git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions \
-        ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+        /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
     && git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting \
-        ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        /root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' /root/.zshrc \
-    && sed -i 's/plugins=(git)/plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)/' /root/.zshrc \
-    && echo '' >> /root/.zshrc \
-    && echo 'export PATH="$HOME/.local/bin:$PATH"' >> /root/.zshrc \
-    && echo '[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh' >> /root/.zshrc \
-    && echo '[ -f /usr/share/doc/fzf/examples/completion.zsh ]   && source /usr/share/doc/fzf/examples/completion.zsh' >> /root/.zshrc
-
-RUN chsh -s /usr/bin/zsh root
+# Base image may use "devcontainers" or "robbyrussell" as default theme
+RUN sed -i 's/ZSH_THEME="devcontainers"/ZSH_THEME="agnoster"/' /root/.zshrc; \
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' /root/.zshrc; \
+    sed -i 's/plugins=(git)/plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)/' /root/.zshrc; \
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> /root/.zshrc; \
+    echo '[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh' >> /root/.zshrc; \
+    echo '[ -f /usr/share/doc/fzf/examples/completion.zsh ]   && source /usr/share/doc/fzf/examples/completion.zsh' >> /root/.zshrc
 
 # ── workspace ─────────────────────────────────────────────────────────────────
 RUN mkdir -p /workspace
