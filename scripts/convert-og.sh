@@ -7,6 +7,21 @@ DEST="${2:-ordering-guides/markdown}"
 
 mkdir -p "${DEST}"
 
+# ── pre-flight: verify markitdown is installed with PDF support ───────────────
+if ! command -v markitdown &>/dev/null; then
+  echo "ERROR: markitdown not found. Run: pip install 'markitdown[pdf]'"
+  exit 1
+fi
+
+# verify pdfminer is available (required for PDF conversion)
+if ! python3 -c "import pdfminer" &>/dev/null; then
+  echo "ERROR: pdfminer not found. Run: pip install 'markitdown[pdf]'"
+  exit 1
+fi
+
+echo "markitdown $(markitdown --version 2>&1 || echo 'version unknown')"
+echo "pdfminer: $(python3 -c "import pdfminer; print(pdfminer.__version__)" 2>/dev/null || echo 'version unknown')"
+
 CONVERTED=0
 FAILED=0
 
