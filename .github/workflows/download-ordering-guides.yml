@@ -1,48 +1,66 @@
-#!/usr/bin/env bash
-set -euo pipefail
+name: Fortinet Ordering Guides
 
-# ── config ────────────────────────────────────────────────────────────────────
-SRC="${1:-ordering-guides/pdf}"
-DEST="${2:-ordering-guides/markdown}"
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # every Monday at 06:00 UTC
+  workflow_dispatch:       # manual trigger from Actions tab
 
-mkdir -p "${DEST}"
+permissions:
+  contents: write
 
-CONVERTED=0
-FAILED=0
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-echo "Converting PDFs in ${SRC} → ${DEST}"
-echo "══════════════════════════════════════════════"
+      - name: Download PDFs
+        run: bash scripts/download-og.sh ordering-guides/pdf
 
-for PDF in "${SRC}"/*.pdf; do
-  [[ -f "${PDF}" ]] || { echo "No PDFs found in ${SRC}"; exit 1; }
+      - name: Commit PDFs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ordering-guides/pdf/
+          if git diff --staged --quiet; then
+            echo "No changes — PDFs already up to date."
+          else
+            git commit -m "chore: download ordering guides PDFs [$(date -u +%Y-%m-%d)]"
+            git push
+          fi
 
-  BASENAME=$(basename "${PDF}" .pdf)
-  OUT="${DEST}/${BASENAME}.md"
+  convert:
+    runs-on: ubuntu-latest
+    needs: download
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
-  echo "──────────────────────────────────────────────"
-  echo "  Input  : ${PDF}"
-  echo "  Output : ${OUT}"
+      - name: Pull latest commits
+        run: git pull origin ${{ github.ref_name }}
 
-  ERROR_LOG="${OUT}.err"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-  if markitdown "${PDF}" > "${OUT}" 2>"${ERROR_LOG}"; then
-    SIZE=$(du -h "${OUT}" | cut -f1)
-    echo "  ✅  Converted (${SIZE})"
-    rm -f "${ERROR_LOG}"
-    (( CONVERTED++ )) || true
-  else
-    echo "  ❌  Failed — reason:"
-    cat "${ERROR_LOG}" || echo "  (no error output)"
-    rm -f "${OUT}" "${ERROR_LOG}"
-    (( FAILED++ )) || true
-  fi
-done
+      - name: Install markitdown
+        run: pip install markitdown
 
-echo ""
-echo "══════════════════════════════════════════════"
-echo "  Converted : ${CONVERTED}"
-echo "  Failed    : ${FAILED}"
-echo "  Output dir: ${DEST}"
-echo "══════════════════════════════════════════════"
+      - name: Convert PDFs to Markdown
+        run: bash scripts/convert-og.sh ordering-guides/pdf ordering-guides/markdown
 
-[[ "${CONVERTED}" -gt 0 ]] || { echo "ERROR: no files converted"; exit 1; }
+      - name: Commit Markdown
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ordering-guides/markdown/
+          if git diff --staged --quiet; then
+            echo "No changes — Markdown already up to date."
+          else
+            git commit -m "chore: convert ordering guides to markdown [$(date -u +%Y-%m-%d)]"
+            git push
+          fi
