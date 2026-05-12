@@ -23,13 +23,17 @@ for PDF in "${SRC}"/*.pdf; do
   echo "  Input  : ${PDF}"
   echo "  Output : ${OUT}"
 
-  if markitdown "${PDF}" > "${OUT}" 2>&1; then
+  ERROR_LOG="${OUT}.err"
+
+  if markitdown "${PDF}" > "${OUT}" 2>"${ERROR_LOG}"; then
     SIZE=$(du -h "${OUT}" | cut -f1)
     echo "  ✅  Converted (${SIZE})"
+    rm -f "${ERROR_LOG}"
     (( CONVERTED++ )) || true
   else
-    rm -f "${OUT}"
-    echo "  ❌  Failed"
+    echo "  ❌  Failed — reason:"
+    cat "${ERROR_LOG}" || echo "  (no error output)"
+    rm -f "${OUT}" "${ERROR_LOG}"
     (( FAILED++ )) || true
   fi
 done
