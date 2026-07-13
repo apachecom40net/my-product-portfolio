@@ -133,14 +133,10 @@ FORTIADC BUNDLES
 | Threat Analytics                            |          |                  |     |     |                      |     |     |            |     |
 | FortiGuard Advanced Bot protection          |          |                  |     |     |                      |     |     |            |     |
 | FortiCare Premium Support                   |          |                  |    |     |                      |    |     |            |     |
-FORTIGUARD ADVANCED BOT PROTECTION
-220F 320F 420F 1000G 2000G 4000G 5000G VM01 VM02 VM04 VM08 VM16 VM32 VMUL
-Number of Bot Requests1  500 K 700 K 1 M 1.5 M 2.5 M 4 M 7 M 150 K 250 K 500 K 900 K 1.5 M 2 M 4 M
-1 Number of Advanced Bot Protection requests per month (varies by platform)
 FORTIADC AI-ASSIST
 220F 320F 420F 1000G 2000G 4000G 5000G VM01 VM02 VM04 VM08 VM16 VM32
-Monthly Tokens2  1 M 1.5 M 2.5 M 3.2 M 6 M 9 M 15 M 350 K 600 K 1.1 M 2 M 3.2 M 4.5 M
-2 Tokens reset every month from the activation date. Customers can add more with a FortiAI Assist top-up license. SKU: LIC-FAITOKEN-1M/5M/10M
+Monthly Tokens1  1 M 1.5 M 2.5 M 3.2 M 6 M 9 M 15 M 350 K 600 K 1.1 M 2 M 3.2 M 4.5 M
+1 Tokens reset every month from the activation date. Customers can add more with a FortiAI Assist top-up license. SKU: LIC-FAITOKEN-1M/5M/10M
 FortiADC Manager
 | NAME |     | SKU | DESCRIPTION |     |     |     |     |     |     |
 | ---- | --- | --- | ----------- | --- | --- | --- | --- | --- | --- |
@@ -152,10 +148,7 @@ Unlimited FortiADC virtual management  FortiADC virtual management appliance. Ma
 FAD-CM-UL
 | appliances |     |     | vSphere platforms. Requires BASE license. |     |     |     |     |     |     |
 | ---------- | --- | --- | ----------------------------------------- | --- | --- | --- | --- | --- | --- |
-4
-
-FortiADC Ordering Guide
-Fortinet Training and Certification
+          Fortinet Training and Certification
 FortiADC Administrator Training
 This course covers configuring and administering the most commonly used features of FortiADC. It includes exploring Layer 4
 and Layer 7 server load balancing, link load balancing, global load balancing, high availability (HA), firewall policies, advanced
@@ -167,7 +160,7 @@ php?page=library_fortiadc
 Training Offering
 For training SKUs, purchasing, and delivery options, visit: https://training.fortinet.com/local/staticpage/view.
 php?page=purchasing_process
-5
+4
 
 FortiADC Ordering Guide
 FORTIADC CHEAT SHEET
@@ -231,4 +224,4 @@ tions may affect performance results. Nothing herein represents any binding comm
 that expressly warrants that the identified product will perform according to certain expressly-identified performance metrics and, in such event, only the specific performance metrics expressly identified in such binding written contract shall be binding on Fortinet. For absolute clarity, any
 such warranty will be limited to performance in the same ideal conditions as in Fortinet’s internal lab tests. Fortinet disclaims in full any covenants, representations, and guarantees pursuant hereto, whether express or implied. Fortinet reserves the right to change, modify, transfer, or otherwise
 revise this publication without notice, and the most current version of the publication shall be applicable.
-FADC-OG-R19-20260312
+FADC-OG-R20-20260626

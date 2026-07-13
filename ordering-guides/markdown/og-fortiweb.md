@@ -31,8 +31,8 @@ that matter.
 Threat Analytics is available for FortiAppSec Cloud Advanced Plan customers and is sold as part of
 the Advanced bundle or A-La-Carte for FortiWeb appliances.
 
-| FortiWeb |     |     |     |     |     |     | Ordering Guide |
-| -------- | --- | --- | --- | --- | --- | --- | -------------- |
+| FortiWeb |     |     |     |     | Ordering Guide |
+| -------- | --- | --- | --- | --- | -------------- |
 Product Offerings
 For OPEX-based purchasing, choose between FortiAppSec Cloud WAF requiring no hardware/software installation) and
 FortiWeb-VM S-series (a yearly subscription of our virtual WAF supported on all common hypervisors and public cloud
@@ -43,47 +43,43 @@ Bandwidth seat, one web application per seat.
 When choosing the virtual WAF (FortiWeb-VM S series), remember this is a yearly subscription. Choose between the standard
 and advanced subscription bundles, which vary by the type of services included.
 OPEX
-|     | VM01 |     | VM02 | VM04 |     | VM08 | VM16 |
-| --- | ---- | --- | ---- | ---- | --- | ---- | ---- |
+|     | VM01 | VM02 | VM04 | VM08 | VM16 |
+| --- | ---- | ---- | ---- | ---- | ---- |
 PERFORMANCE
-| HTTP Throughput | 25 Mbps |     | 100 Mbps | 500 Mbps |     | 3 Gbps | 6 Gbps |
-| --------------- | ------- | --- | -------- | -------- | --- | ------ | ------ |
+| HTTP Throughput | 25 Mbps | 100 Mbps | 500 Mbps | 3 Gbps | 6 Gbps |
+| --------------- | ------- | -------- | -------- | ------ | ------ |
 HTTPS Throughput (2048
-|     | 10 Mbps |     | 50 Mbps | 250 Mbps |     | 1 Gbps | 3 Gbps |
-| --- | ------- | --- | ------- | -------- | --- | ------ | ------ |
+|     | 10 Mbps | 50 Mbps | 250 Mbps | 1 Gbps | 3 Gbps |
+| --- | ------- | ------- | -------- | ------ | ------ |
 keysize)
 Max Machine Learning
-|     | 4   |     | 8   | 16  |     | 32  | 32  |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | 4   | 8   | 16  | 32  | 32  |
+| --- | --- | --- | --- | --- | --- |
 Domains
 HARDWARE
-| Form Factor |     |     |     | Virtual machine |     |     |     |
-| ----------- | --- | --- | --- | --------------- | --- | --- | --- |
+| Form Factor |     |     | Virtual machine |     |     |
+| ----------- | --- | --- | --------------- | --- | --- |
 SECURITY SERVICES
-| Web Security  | Standard |     | Standard | Standard |     | Standard | Standard |
-| ------------- | -------- | --- | -------- | -------- | --- | -------- | -------- |
-| IP Reputation | Standard |     | Standard | Standard |     | Standard | Standard |
-| Antimalware   | Standard |     | Standard | Standard |     | Standard | Standard |
+| Web Security  | Standard | Standard | Standard | Standard | Standard |
+| ------------- | -------- | -------- | -------- | -------- | -------- |
+| IP Reputation | Standard | Standard | Standard | Standard | Standard |
+| Antimalware   | Standard | Standard | Standard | Standard | Standard |
 FortiWeb Cloud Sandbox Advanced Advanced Advanced Advanced Advanced
 Credential Stuffing Defense Advanced Advanced Advanced Advanced Advanced
 Threat Analytics Advanced Advanced Advanced Advanced Advanced
 Advanced Bot Protection Enterprise Enterprise Enterprise Enterprise Enterprise
 Client-Side Security Enterprise Enterprise Enterprise Enterprise Enterprise
-| DLP | Enterprise |     | Enterprise | Enterprise |     | Enterprise | Enterprise |
-| --- | ---------- | --- | ---------- | ---------- | --- | ---------- | ---------- |
+| DLP | Enterprise | Enterprise | Enterprise | Enterprise | Enterprise |
+| --- | ---------- | ---------- | ---------- | ---------- | ---------- |
 ADDITIONAL SERVICES
-| FortiAI Subscription | Add-on   |     | Add-on   | Add-on   |     | Add-on   | Add-on   |
-| -------------------- | -------- | --- | -------- | -------- | --- | -------- | -------- |
-| 24x7 Support         | Included |     | Included | Included |     | Included | Included |
-| SOCaaS               | Add-on   |     | Add-on   | Add-on   |     | Add-on   | Add-on   |
-FORTIGUARD ADVANCED BOT PROTECTION
-|     | 400F 600F | 1000F | 2000F 3000F | 4000F | VM01 | VM02 VM04 | VM08 VM16 |
-| --- | --------- | ----- | ----------- | ----- | ---- | --------- | --------- |
-Number of Bot Requests1  850,000 1.25 M 1.7 M 3 M 4 M 11 M 200,000 400,000 900,000 1.7 M 2.8 M
-1 Number of Advanced Bot Protection requests per month (varies by platform)
+| FortiAI Subscription1  | Add-on   | Add-on   | Add-on   | Add-on   | Add-on   |
+| ---------------------- | -------- | -------- | -------- | -------- | -------- |
+| 24x7 Support           | Included | Included | Included | Included | Included |
+| SOCaaS                 | Add-on   | Add-on   | Add-on   | Add-on   | Add-on   |
+1 FortiAI-Assist tokens included. Additional tokens available via subscription Add-on
 Order Information
-|     | VM01 |     | VM02 | VM04 |     | VM08 | VM16 |
-| --- | ---- | --- | ---- | ---- | --- | ---- | ---- |
+|     | VM01 | VM02 | VM04 | VM08 | VM16 |
+| --- | ---- | ---- | ---- | ---- | ---- |
 Standard Subscription FC1-10-WBVMS-916-02-DD FC2-10-WBVMS-916-02-DD FC3-10-WBVMS-916-02-DD FC4-10-WBVMS-916-02-DD FC5-10-WBVMS-916-02-DD
 Advanced Subscription FC1-10-WBVMS-582-02-DD FC2-10-WBVMS-582-02-DD FC3-10-WBVMS-582-02-DD FC4-10-WBVMS-582-02-DD FC5-10-WBVMS-582-02-DD
 Enterprise Subscription FC1-10-WBVMS-1267-02-DD FC2-10-WBVMS-1267-02-DD FC3-10-WBVMS-1267-02-DD FC4-10-WBVMS-1267-02-DD FC5-10-WBVMS-1267-02-DD
@@ -121,11 +117,10 @@ Bot Defense
 | DDoS Mitigation      | L3-L7                           | ⃝✓  | ⃝✓  | ⃝✓  |
 |                      | SSL inspection                  | ⃝✓  | ⃝✓  | ⃝✓  |
 |                      | Health Monitoring               | ⃝✓  | ⃝✓  | ⃝✓  |
-Application Delivery
-|     | Client Authentication |     | ⃝✓  | ⃝✓  |
-| --- | --------------------- | --- | --- | --- |
-|     | Content Routing       |     | ⃝✓  | ⃝✓  |
-|     | Caching/ acceleration | ⃝✓  | ⃝✓  | ⃝✓  |
+| Application Delivery | Authentication Proxy            |     | ⃝✓  | ⃝✓  |
+|                      | Client Authentication           |     | ⃝✓  | ⃝✓  |
+|                      | Content Routing                 |     | ⃝✓  | ⃝✓  |
+|                      | Caching/ acceleration           | ⃝✓  | ⃝✓  | ⃝✓  |
 CDN
 |                  | Compression         | ⃝✓  | ⃝✓  | ⃝✓  |
 | ---------------- | ------------------- | --- | --- | --- |
@@ -140,46 +135,40 @@ FortiWeb Ordering Guide
 FortiAppSec Order Information
 SOLUTION DESCRIPTION SKU
 FORTIAPPSEC CLOUD WAF
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Standard Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Standard Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Standard Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Advanced Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1115-02-DD
-Bandwidth FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Advanced Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1115-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Advanced Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1115-02-DD
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Enterprise Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Enterprise Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Enterprise Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC1-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC2-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25-74 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC3-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 74+ Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC4-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC1-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-Applications
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC2-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25+ Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC3-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise plan.
-FC1-10-UCAPF-1256-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise
-FC2-10-UCAPF-1256-02-DD
-plan. Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25+ Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise plan.
-FC3-10-UCAPF-1256-02-DD
-Includes FortiCare premium support.
+STANDARD PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1114-02-DD
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1114-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1114-02-DD
+ADVANCED PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1115-02-DD
+Bandwidth
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1115-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1115-02-DD
+ENTERPRISE PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1254-02-DD
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1254-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1254-02-DD
+STANDARD PLAN
+1-4 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC1-10-UCAPF-1116-02-DD
+5-24 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC2-10-UCAPF-1116-02-DD
+25-74 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC3-10-UCAPF-1116-02-DD
+75-249 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC5-10-UCAPF-1116-02-DD
+250-499 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC6-10-UCAPF-1116-02-DD
+500+ Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC7-10-UCAPF-1116-02-DD
+ADVANCED PLAN
+1-4 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC1-10-UCAPF-1257-02-DD
+5-24 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC2-10-UCAPF-1257-02-DD
+Applications 25-74 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC4-10-UCAPF-1257-02-DD
+75-249 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC5-10-UCAPF-1257-02-DD
+250-499 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC6-10-UCAPF-1257-02-DD
+500+ Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC7-10-UCAPF-1257-02-DD
+ENTERPRISE PLAN
+1-4 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC1-10-UCAPF-1256-02-DD
+5-24 Applications,. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC2-10-UCAPF-1256-02-DD
+25-74 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC4-10-UCAPF-1256-02-DD
+75-249 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC5-10-UCAPF-1256-02-DD
+250-499 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC6-10-UCAPF-1256-02-DD
+500+ Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC7-10-UCAPF-1256-02-DD
 FORTIAPPSEC CLOUD ADD-ONS
 24x7 cloud-based managed log monitoring, incident triage and SOC escalation service for Cloud WAF. 1-4 applications
 FC1-10-UCAPF-464-02-DD
@@ -233,10 +222,11 @@ Advanced Bot Protection Enterprise Enterprise Enterprise Enterprise Enterprise E
 Client-Side Security Enterprise Enterprise Enterprise Enterprise Enterprise Enterprise Enterprise
 DLP Enterprise Enterprise Enterprise Enterprise Enterprise Enterprise Enterprise
 ADDITIONAL SERVICES
-FortiAI Subscription Add-on Add-on Add-on Add-on Add-on Add-on Add-on
+FortiAI Subscription1  Add-on Add-on Add-on Add-on Add-on Add-on Add-on
 24x7 Support Included Included Included Included Included Included Included
 | SOCaaS | Add-on | Add-on | Add-on | Add-on | Add-on | Add-on | Add-on |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+1 FortiAI-Assist tokens included. Additional tokens available via subscription Add-on
 5
 
 | FortiWeb |     |     |     |     |     |     | Ordering Guide |
@@ -265,7 +255,7 @@ Renewal Bundle
 | --- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 ENTERPRISE BUNDLES
 FWB-100F-BDL- FWB-400F-BDL- FWB-600F-BDL- FWB-1000F-BDL- FWB-2000F-BDL- FWB-3000F-BDL- FWB-4000F-BDL-
-Hardware  Bundle1
+Hardware  Bundle
 |     | 1266-DD | 1266-DD | 1266-DD | 1266-DD | 1266-DD | 1266-DD | 1266-DD |
 | --- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
 FC-10-W01HF-1266- FC-10-FV40F-1266- FC-10-W06HF- FC-10-W01KF-1266- FC-10-W02KF-1266- FC-10-W03KF-1266- FC-10-W04KF-1266-
@@ -275,10 +265,6 @@ Renewal SKUs
 REPLACEMENT
 | Replacement Disk SKU |     |     |     |     |     | SP-DFWB2T | SP-DFWB2T |
 | -------------------- | --- | --- | --- | --- | --- | --------- | --------- |
-1 Check number of Advanced Bot Protection requests on page 2
-6
-
-FortiWeb Ordering Guide
 Fortinet Training and Certification
 FCP – FortiWeb Administrator Training and Certification
 Learn how to deploy, configure, and troubleshoot FortiWeb. Learn key concepts of web application security and explore
@@ -292,7 +278,7 @@ https://training.fortinet.com/local/staticpage/view.php?page=library_fortiweb-ad
 Training Offering
 For training SKUs, purchasing, and delivery options, visit:
 https://training.fortinet.com/local/staticpage/view.php?page=purchasing_process
-7
+6
 
 FortiWeb Ordering Guide
 Cheat Sheet
@@ -315,7 +301,7 @@ and number of applications, measured by 95% • The only vendor to provide ML fo
 percentile. detection for web and API applications.
 • FortiWeb-VM: S-series provides yearly • Two-layer ML tech ensures virtually no false
 subscription for IaaS/private cloud. All inclusive positives.
-standard/advanced bundle options. • FortiGuard Labs automated updates ensure AI
+standard/advanced/enterprise bundle options. • FortiGuard Labs automated updates ensure AI
 CAPEX: two options available: threat models are up-to-date.
 • HW appliances: selected by throughput (50 Mbps • Continuous Learning automatically adjusts models
 to 70 Gbps) when application changes, virtually integrating
@@ -340,4 +326,4 @@ tions may affect performance results. Nothing herein represents any binding comm
 that expressly warrants that the identified product will perform according to certain expressly-identified performance metrics and, in such event, only the specific performance metrics expressly identified in such binding written contract shall be binding on Fortinet. For absolute clarity, any
 such warranty will be limited to performance in the same ideal conditions as in Fortinet’s internal lab tests. Fortinet disclaims in full any covenants, representations, and guarantees pursuant hereto, whether express or implied. Fortinet reserves the right to change, modify, transfer, or otherwise
 revise this publication without notice, and the most current version of the publication shall be applicable.
-FWEB-OG-R25-20260318
+FWEB-OG-R26-20260702

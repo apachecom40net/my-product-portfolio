@@ -99,6 +99,7 @@ DDOS PROTECTION
 APPLICATION DELIVERY
 | SSL Certificates - Automatic and Custom     |    |    |    |
 | ------------------------------------------- | --- | --- | --- |
+| Authentication Proxy                        |     |    |    |
 | Client Authentication\Mutual TLS            |     |    |    |
 | Content Delivery Network (CDN)              |    |    |    |
 | Limited GEO CDN                             |    |    |    |
@@ -135,6 +136,12 @@ SERVICES
 | SOCaaS       | Available Separately | Available Separately |    |
 Dedicated WAF Environment Available Separately Available Separately Available Separately
 1 FortiAI-Assist is now available in Beta mode. Restrictions apply
+Licensing and Availability
+The Service is available as a subscription via the FortiCloud portal. Customers can choose between the Standard, Advanced,
+and Enterprise plans, with options to add SOCaaS to Standard and Advanced Plans and GSLB as a standalone service if needed
+(both included in the Enterprise Plan).
+FortiAppSec can also be subscribed to via Cloud Marketplaces.
+For more information, please visit www.fortinet.com or contact your Fortinet sales representative.
 3
 
 FortiAppSec Cloud Ordering Guide
@@ -143,46 +150,40 @@ When purchasing Cloud WAF pick Bandwidth and Applications SKUs. Make sure to cho
 plan for both SKUs. Mix and match is not allowed, read more in the FAQ below.
 SOLUTION DESCRIPTION SKU
 FORTIAPPSEC CLOUD WAF
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Standard Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Standard Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Standard Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1114-02-DD
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Advanced Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1115-02-DD
-Bandwidth FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Advanced Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1115-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Advanced Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1115-02-DD
-FortiAppSec Cloud. Cloud WAF, 25 Mbps Enterprise Plan (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 50-99 Mbps Enterprise Plan (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 100+ Mbps Enterprise Plan (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1254-02-DD
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC1-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC2-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25-74 Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC3-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 74+ Applications, Standard Plan. Must be combined with a Bandwidth Standard plan.
-FC4-10-UCAPF-1116-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC1-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-Applications
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC2-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25+ Applications, Advanced Plan. Must be combined with a Bandwidth Advanced plan.
-FC3-10-UCAPF-1257-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 1-4 Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise plan.
-FC1-10-UCAPF-1256-02-DD
-Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 5-24 Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise
-FC2-10-UCAPF-1256-02-DD
-plan. Includes FortiCare premium support.
-FortiAppSec Cloud. Cloud WAF, 25+ Applications, Enterprise Plan. Must be combined with a Bandwidth Enterprise plan.
-FC3-10-UCAPF-1256-02-DD
-Includes FortiCare premium support.
+STANDARD PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1114-02-DD
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1114-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1114-02-DD
+ADVANCED PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1115-02-DD
+Bandwidth
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1115-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1115-02-DD
+ENTERPRISE PLAN
+25 Mbps (Use seat 1). Includes FortiCare premium support. FC1-10-UCAPF-1254-02-DD
+50-99 Mbps (25Mbps/seat). Includes FortiCare premium support. FC2-10-UCAPF-1254-02-DD
+100+ Mbps (25Mbps/seat). Includes FortiCare premium support. FC3-10-UCAPF-1254-02-DD
+STANDARD PLAN
+1-4 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC1-10-UCAPF-1116-02-DD
+5-24 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC2-10-UCAPF-1116-02-DD
+25-74 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC3-10-UCAPF-1116-02-DD
+75-249 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC5-10-UCAPF-1116-02-DD
+250-499 Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC6-10-UCAPF-1116-02-DD
+500+ Applications. Must be combined with a Bandwidth Standard plan. Includes FortiCare premium support. FC7-10-UCAPF-1116-02-DD
+ADVANCED PLAN
+1-4 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC1-10-UCAPF-1257-02-DD
+5-24 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC2-10-UCAPF-1257-02-DD
+Applications 25-74 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC4-10-UCAPF-1257-02-DD
+75-249 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC5-10-UCAPF-1257-02-DD
+250-499 Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC6-10-UCAPF-1257-02-DD
+500+ Applications. Must be combined with a Bandwidth Advanced plan. Includes FortiCare premium support. FC7-10-UCAPF-1257-02-DD
+ENTERPRISE PLAN
+1-4 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC1-10-UCAPF-1256-02-DD
+5-24 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC2-10-UCAPF-1256-02-DD
+25-74 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC4-10-UCAPF-1256-02-DD
+75-249 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC5-10-UCAPF-1256-02-DD
+250-499 Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC6-10-UCAPF-1256-02-DD
+500+ Applications. Must be combined with a Bandwidth Enterprise plan. Includes FortiCare premium support. FC7-10-UCAPF-1256-02-DD
 FORTIAPPSEC CLOUD ADD-ONS
 24x7 cloud-based managed log monitoring, incident triage and SOC escalation service for Cloud WAF. 1-4 applications
 FC1-10-UCAPF-464-02-DD
@@ -196,12 +197,6 @@ FORTIAPPSEC CLOUD STANDALONE SERVICES
 FortiAppSec Cloud. Global Server Load Balancing, 100 QPS (queries per second). Includes FortiCare premium support. FC1-10-UCAPF-330-02-DD
 GSLB
 FortiAppSec Cloud. Global Server Load Balancing, 10 Health Checks. Includes FortiCare premium support. FC1-10-UCAPF-332-02-DD
-Licensing and Availability
-The Service is available as a subscription via the FortiCloud portal. Customers can choose between the Standard, Advanced,
-and Enterprise plans, with options to add SOCaaS to Standard and Advanced Plans and GSLB as a standalone service if needed
-(both included in the Enterprise Plan).
-FortiAppSec can also be subscribed to via Cloud Marketplaces.
-For more information, please visit www.fortinet.com or contact your Fortinet sales representative.
 4
 
 FortiAppSec Cloud Ordering Guide
@@ -291,16 +286,16 @@ Applications – each seat unit is 1
 • 1 Application – FC1-10-UCAPF-1256-02-DD Seat 1
 • Cloud WAF (200Mbps & 40 Applications) Enterprise plan 1Y:
 • 200Mbps – FC3-10-UCAPF-1254-02-DD Seat 8
-• 40 Applications – FC3-10-UCAPF-1256-02-DD Seat 40
+• 40 Applications – FC4-10-UCAPF-1256-02-DD Seat 40
 • Cloud WAF (150Mbps & 10 Applications) Standard plan + SOCaaS 1Y:
 • 150Mbps – FC3-10-UCAPF-1114-02-DD Seat 6
 • 10 Applications – FC2-10-UCAPF-1116-02-DD Seat 10
 • SOCaaS – FC2-10-UCAPF-464-02-DD Seat 10
 www.fortinet.com
-Copyright © 2025 Fortinet, Inc. All rights reserved. Fortinet®, FortiGate®, FortiCare® and FortiGuard®, and certain other marks are registered trademarks of Fortinet, Inc., and other Fortinet names herein may also be registered and/or common law trademarks of Fortinet. All other product or
+Copyright © 2026 Fortinet, Inc. All rights reserved. Fortinet®, FortiGate®, FortiCare® and FortiGuard®, and certain other marks are registered trademarks of Fortinet, Inc., and other Fortinet names herein may also be registered and/or common law trademarks of Fortinet. All other product or
 company names may be trademarks of their respective owners. Performance and other metrics contained herein were attained in internal lab tests under ideal conditions, and actual performance and other results may vary. Network variables, different network environments and other condi-
 tions may affect performance results. Nothing herein represents any binding commitment by Fortinet, and Fortinet disclaims all warranties, whether express or implied, except to the extent Fortinet enters a binding written contract, signed by Fortinet’s SVP Legal and above, with a purchaser
 that expressly warrants that the identified product will perform according to certain expressly-identified performance metrics and, in such event, only the specific performance metrics expressly identified in such binding written contract shall be binding on Fortinet. For absolute clarity, any
 such warranty will be limited to performance in the same ideal conditions as in Fortinet’s internal lab tests. Fortinet disclaims in full any covenants, representations, and guarantees pursuant hereto, whether express or implied. Fortinet reserves the right to change, modify, transfer, or otherwise
 revise this publication without notice, and the most current version of the publication shall be applicable.
-UCA-OG-R10-20251204
+UCA-OG-R11-20260702
